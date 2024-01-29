@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ```
 
 ## Downloads
-In this paper, we release four datasets (OS-ESB-core, OS-NTU-core, OS-MN40-core, and OS-ABO-core) for Open-Set Retrieval task, which can be download in [here](https://moon-lab.tech/os3dor). Our dataset splitting files of the four datasets can be download in [here](https://pan.baidu.com/s/1uvrT9xBps6DENndxyu8V_A?pwd=evby). And those pre-extracted features of the four datasets can be download in [here](https://pan.baidu.com/s/1gylhaVO9dXmTbfIqV3DMBw?pwd=y774). The pre-extracted features should be placed in the `feature` folder.
+In this paper, we release four datasets (OS-ESB-core, OS-NTU-core, OS-MN40-core, and OS-ABO-core) for Open-Set Retrieval task, which can be download in [here](https://moon-lab.tech/os3dor). Our dataset splitting files of the four datasets can be download in [here](https://pan.baidu.com/s/1uvrT9xBps6DENndxyu8V_A?pwd=evby). And those pre-extracted features (80 files) of the four datasets can be download in [here](https://pan.baidu.com/s/1gylhaVO9dXmTbfIqV3DMBw?pwd=y774). The pre-extracted features should be placed in the `feature` folder.
 
 ## Usage
 First, you should compress the voxel features with the following command:
