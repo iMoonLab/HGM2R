@@ -1,0 +1,44 @@
+
+mark: mn40_shot_10
+
+arch:
+  pretrained: true
+  n_view: 12
+  img_size: 224
+  ft_dim: 512
+
+  # 1080Ti
+  # n_view bz
+  #   12   32
+  batch_size: 64
+
+  # train
+  lr: 0.001
+  momentum: 0.9
+  weight_decay: 5e-4
+  max_epoch: 80
+  val_interval: 5
+  cos:
+    T_max: 40
+    eta_min: 1e-6
+  es:
+    patience: 10
+    threshold: 0.005
+
+n_class: 40
+n_worker: 16
+
+path:
+  wd: /home2/fengyifan/code/OSR/Extract-Feature
+  data_root: /home2/fengyifan/data/modelnet/40/ModelNet40_MM
+  split: /home2/fengyifan/code/OSR/Extract-Feature/splits/mn40__level_0__t10v10.json
+  # outputs
+  out: ${path.wd}/cache
+  res: ${path.out}/${mark}
+
+hydra:
+  run:
+    dir: ${path.res}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+  sweep:
+    dir: ${path.res}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+    subdir: ${hydra.job.num}

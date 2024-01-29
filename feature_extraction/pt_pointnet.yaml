@@ -1,0 +1,61 @@
+
+# mark: esb__level_all__t2r8
+# mark: ntu__level_all__t2r8
+mark: mn40__level_all__t2r8
+# mark: mn40__level_all__t2r8_rnd
+# mark: mn40__level_all__t4r6
+# mark: mn40__level_all__t4r6_rnd
+# mark: mn40__level_all__t6r4
+# mark: mn40__level_all__t6r4_rnd
+# mark: abo__level_all__t2r8
+# mark: mn40__2set_test1
+# mark: mn40__2set_test2
+# mark: mn40>abo__level_all__in
+# mark: mn40>abo__level_all__ex
+# mark: mn40>scanobjectnn__level_all__bg
+# mark: mn40>scanobjectnn__level_all__nobg
+
+arch:
+  n_pt: 1024
+
+  # 1080Ti 128
+  batch_size: 128
+
+  # train
+  lr: 0.01
+  momentum: 0.9
+  weight_decay: 5e-4
+  max_epoch: 250
+  val_interval: 10
+  cos:
+    T_max: 150
+    eta_min: 1e-6
+  es:
+    patience: 30
+    threshold: 0.002
+
+n_worker: 16
+
+this_task: pt${arch.n_pt}_pointnet
+uuid: ${mark}__${this_task}
+path:
+  wd: /home2/fengyifan/code/OSR/Extract-Feature
+  # data_root: /home2/fengyifan/data/ESB/ESB_MM
+  # data_root: /home2/fengyifan/data/NTU/NTU_2000_MM
+  data_root: /home2/fengyifan/data/modelnet/40/ModelNet40_MM
+  # data_root: /home2/fengyifan/data/ABO/ABO_MM
+  # data_ret_root: /home2/fengyifan/data/modelnet/40/ModelNet40_MM
+  # data_ret_root: /home2/fengyifan/data/ABO/ABO_MM
+  # data_ret_root: /home2/fengyifan/data/scanobjectnn/ScanObjectNN_1024
+  # data_ret_root: /home2/fengyifan/data/scanobjectnn/ScanObjectNN_1024_NOBG
+  split: /home2/fengyifan/code/OSR/Extract-Feature/splits/${mark}.json
+  # outputs
+  out: ${path.wd}/cache
+  res: ${path.out}/${uuid}
+
+hydra:
+  run:
+    dir: ${path.res}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+  sweep:
+    dir: ${path.res}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
