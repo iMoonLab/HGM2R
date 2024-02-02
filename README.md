@@ -4,7 +4,7 @@ This repository contains the source code for the paper "Hypergraph-Based Multi-M
 ![framework](doc/fw.jpg)
 
 ## Introduction
-In this repository, we provide our implementation of Hypergraph-Based Multi-Modal Representation (HGM$^2$R), which is based on the following environments:
+In this repository, we provide our implementation of Hypergraph-Based Multi-Modal Representation (HGM2R), which is based on the following environments:
 * [python 3.9](https://www.python.org/): basic programming language.
 * [torch 1.12.1](https://pytorch.org/): for computation.
 * [hydra-core 1.3.2](https://hydra.cc/docs/intro/): for configuration and multi-run management.
@@ -24,7 +24,7 @@ First, you should compress the voxel features with the following command:
 ```bash
 python pre_vox_ft_compress.py
 ```
-Then, you can train the HGM$^2$R model with the following command:
+Then, you can train the HGM2R model with the following command:
 ```bash
 python train_hgm2r.py
 ```
